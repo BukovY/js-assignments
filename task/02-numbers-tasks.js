@@ -21,7 +21,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-  return width*height;
+  throw new Error('Not implemented');
 }
 
 
@@ -37,7 +37,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
-  return Math.PI*2*radius;
+  throw new Error('Not implemented');
 }
 
 /**
@@ -53,7 +53,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1/2+value2/2);
+  throw new Error('Not implemented');
 }
 
 /**
@@ -73,7 +73,7 @@ function getAverage(value1, value2) {
  *   (4, 2) (1, 6) => 5
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
+  throw new Error('Not implemented');
 }
 
 /**
@@ -89,7 +89,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  return (0-b)/a;
+  throw new Error('Not implemented');
 }
 
 
@@ -128,7 +128,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  return value %10;
+  throw new Error('Not implemented');
 }
 
 
@@ -144,7 +144,7 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-  return value.indexOf('.') == -1 ? parseInt(value): parseFloat(value);
+  throw new Error('Not implemented');
 }
 
 /**
@@ -161,7 +161,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelipidedDiagonal(a, b, c) {
-  return Math.sqrt(Math.pow(a,2)+Math.pow(b,2)+Math.pow(c,2)); // https://infofaq.ru/diagonal-pryamougolnogo-parallelepipeda.html#:~:text=%D0%94%D0%B8%D0%B0%D0%B3%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%20%D0%BF%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BF%D0%B0%D1%80%D0%B0%D0%BB%D0%BB%D0%B5%D0%BB%D0%B5%D0%BF%D0%B8%D0%BF%D0%B5%D0%B4%D0%B0%20%D1%80%D0%B0%D0%B2%D0%BD%D0%B0%20%D0%BA%D0%BE%D1%80%D0%BD%D1%8E,%D1%82%D1%80%D0%B5%D1%85%20%D0%B5%D0%B3%D0%BE%20%D0%B8%D0%B7%D0%BC%D0%B5%D1%80%D0%B5%D0%BD%D0%B8%D0%B9%20(%D1%80%D0%B5%D0%B1%D0%B5%D1%80).
+  throw new Error('Not implemented');
 }
 
 /**
