@@ -46,7 +46,7 @@ function getComposition(f, g) {
  *
  */
 function getPowerFunction(exponent) {
-  throw new Error('Not implemented');
+  return function (el) {return Math.pow(el, exponent)};
 }
 
 
@@ -83,7 +83,10 @@ function getPolynom() {
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
 function memoize(func) {
-  throw new Error('Not implemented');
+  let date = func()
+  return function(){
+    return date
+  }
 }
 
 
@@ -103,7 +106,7 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
-  throw new Error('Not implemented');     
+  throw new Error('Not implemented');
 }
 
 
@@ -154,7 +157,7 @@ function partialUsingArguments(fn) {
 
 
 /**
- * Returns the id generator function that returns next integer starting from specified 
+ * Returns the id generator function that returns next integer starting from specified
  * number every time when invoking.
  *
  * @param {Number} startFrom

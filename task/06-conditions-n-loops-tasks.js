@@ -45,7 +45,11 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-  throw new Error('Not implemented');
+  let factorial = 1;
+  for(let i=1; i<=n;i++){
+    factorial = factorial*i
+  }
+  return factorial;
 }
 
 
@@ -67,7 +71,7 @@ function getSumBetweenNumbers(n1, n2) {
 
 
 /**
- * Returns true, if a triangle can be built with the specified sides a,b,c and false 
+ * Returns true, if a triangle can be built with the specified sides a,b,c and false
  * in any other ways.
  *
  * @param {number} a
@@ -171,7 +175,7 @@ function findFirstSingleChar(str) {
 
 
 /**
- * Returns the string representation of math interval, specified by two points and 
+ * Returns the string representation of math interval, specified by two points and
  * include / exclude flags.
  * See the details: https://en.wikipedia.org/wiki/Interval_(mathematics)
  *
