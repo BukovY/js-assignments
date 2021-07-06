@@ -22,7 +22,7 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-  throw new Error('Not implemented');
+  return arr.indexOf(value);
 }
 
 /**
@@ -54,7 +54,7 @@ function generateOdds(len) {
  *    [] => []
  */
 function doubleArray(arr) {
-  throw new Error('Not implemented');
+  return [...arr, ...arr];
 }
 
 
@@ -70,7 +70,7 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-  throw new Error('Not implemented');
+  return arr.filter(el => el > 0);
 }
 
 /**
@@ -85,7 +85,7 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
-  throw new Error('Not implemented');
+  return arr.filter(el => (typeof el === 'string' || el instanceof String));
 }
 
 /**
@@ -117,7 +117,7 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-  throw new Error('Not implemented');
+  return arr.map(el => el.toUpperCase());
 }
 
 
@@ -132,7 +132,7 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-  throw new Error('Not implemented');
+  return arr.map(el => el.length);
 }
 
 /**
@@ -147,7 +147,7 @@ function getStringsLength(arr) {
  *    [ 1, 'b', 'c'], 0, 'x'  => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(arr, item, index) {
-  throw new Error('Not implemented');
+  return arr.splice(index, 0, item); // https://overcoder.net/q/2448/%D0%BA%D0%B0%D0%BA-%D0%B2%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82-%D0%B2-%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2-%D0%BF%D0%BE-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D0%BC%D1%83-%D0%B8%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D1%83-javascript
 }
 
 /**
@@ -161,7 +161,7 @@ function insertItem(arr, item, index) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
  */
 function getHead(arr, n) {
-  throw new Error('Not implemented');
+  return arr.splice(0, n);
 }
 
 
@@ -176,7 +176,7 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-  throw new Error('Not implemented');
+  return arr.splice(-n, arr.length);
 }
 
 
@@ -201,7 +201,7 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  throw new Error('Not implemented');
+  return arr.map(el => el.join(',')+'\n').join('').slice(0, -1);
 }
 
 /**
@@ -216,7 +216,7 @@ function toCsvText(arr) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-  throw new Error('Not implemented');
+  return arr.map(el => Math.pow(el, 2));
 }
 
 
