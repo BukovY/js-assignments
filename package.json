@@ -6,7 +6,7 @@
     "lint": "eslint ./**/*.js",
     "test": "./node_modules/.bin/mocha",
     "test-debug": "./node_modules/.bin/mocha --debug-brk",
-    "prepush": "npm run lint && npm test"
+    "prepush": ""
   },
   "author": "IT Shark Pro",
   "license": "MIT",
