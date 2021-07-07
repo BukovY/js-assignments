@@ -338,7 +338,7 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-  throw new Error('Not implemented');
+  return arr.reduce(function (prev, curr, ind, arr) {return prev + curr;}, 0 );
 }
 
 /**
@@ -354,7 +354,7 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-  throw new Error('Not implemented');
+  return arr.reduce(function (prev, curr) {return curr? prev: prev+1},0)
 }
 
 /**
@@ -471,7 +471,7 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-  throw new Error('Not implemented');
+  return Array.from(new Set(arr));
 }
 
 /**
@@ -563,8 +563,16 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 function swapHeadAndTail(arr) {
-  throw new Error('Not implemented');
+  let isTwoDivise = arr.length % 2;
+  let part = Math.floor(arr.length / 2)
+  // isTwoDivise == 1? [arr.slice(part+1,), arr[part+1], arr.slice(0,part)].flat() : [arr.slice(part,), arr.slice(0,part)].flat()
+  if(arr.length == 1){
+    return arr;
+  } else if(isTwoDivise == 1){
+    return [arr.slice(part+1,), arr[part], arr.slice(0,part)].flat()
+  } else { return [arr.slice(part,), arr.slice(0,part)].flat()}
 }
+//console.log(swapHeadAndTail([ 1, 2, 3]))
 
 module.exports = {
   findElement: findElement,
