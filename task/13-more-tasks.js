@@ -10,9 +10,12 @@
  *   'azy', 'bk' => 'abkyz'
  *   'zxxlal','laxk'    => 'aklxz'
  *   'abcdefghijklmnop',  'lmnopqrstuvwxyz'  => 'abcdefghijklmnopqrstuvwxyz'
+ *
+ *   https://webformyself.com/kak-proizvesti-udalenie-dublej-massiva-v-es6/ удалить дубли
+ *   тут даже я офигел
  */
 function distinctLettersString(value1, value2) {
-  throw new Error('Not implemented');
+  return Array.from(new Set(value1.split('').concat(value2.split('')))).sort().join('');
 }
 
 
@@ -25,7 +28,16 @@ function distinctLettersString(value1, value2) {
  *
  * @example
  *  'Who you are, Buddy?' => { a:1, d:2, e:1, h:1, o:2, r:1, u:2, y:2 }
- *
+ * let arr = value.split('').filter(el => el != ' ').map(el => el.toLowerCase())
+ let obj = {}
+ for(let i of arr){
+    if(obj[i]){
+      obj[i]++
+    } else {
+      obj[i] = 1
+    }
+  }
+ return obj
  */
 
 function lowerLetters(value) {
