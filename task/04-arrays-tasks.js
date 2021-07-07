@@ -102,7 +102,7 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-  throw new Error('Not implemented');
+  return arr.filter(el => el? el: '')
 }
 
 /**
@@ -305,7 +305,7 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  throw new Error('Not implemented');
+  return arr.filter(el => el > 0 && !(typeof el === 'string' || el instanceof String)).length
 }
 
 /**
@@ -320,6 +320,8 @@ function getPositivesCount(arr) {
  *   [ 'one','two','three' ]          => [ 'one','two', 'three' ]
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
+ *     let arrToreturn = []; for(let i of ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']){for(let k of arr){if(i == k){arrToreturn.push(k)}}}
+ return arrToreturn
  */
 function sortDigitNamesByNumericOrder(arr) {
   throw new Error('Not implemented');

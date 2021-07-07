@@ -68,6 +68,45 @@ function* getPermutations(chars) {
  *    [ 1, 6, 5, 10, 8, 7 ] => 18  (buy at 1,6,5 and sell all at 10)
  */
 function getMostProfitFromStockQuotes(quotes) {
+  /*
+  let maxInd = quotes.indexOf(Math.max(...quotes)); // первое максимальное число
+  let arrToProfit = quotes.splice(0, maxInd+1);
+  if(arrToProfit.length > 1){
+    let max = Math.max(...quotes)
+    let summ = 0//arr.reduce((prev, next)=> {return max-prev},0)
+    for(let i of quotes){
+      summ += max-i;
+    }
+    return summ
+  } else {
+    return 0
+  }
+
+  // find max, buy to max, sell to max, cut arr splice(max - end), repeat
+  function getProfitFromArr(arr){ // max in end
+    if(arr.length > 1){
+      let max = Math.max(...arr)
+      let summ = 0//arr.reduce((prev, next)=> {return max-prev},0)
+      for(let i of arr){
+        summ += max-i;
+      }
+      return summ
+    } else {
+      return 0
+    }
+  }
+  let acc = 0
+  function getFromArr(arrNew){
+    let arr = arrNew.map(el => el);
+    let maxInd = arr.indexOf(Math.max(...arr)); // первое максимальное число
+    let arrToProfit = arr.splice(0, maxInd+1);
+    acc += getProfitFromArr(arrToProfit);
+    getFromArr(arr);
+  }
+  getFromArr(quotes)
+  return acc
+
+   */
   throw new Error('Not implemented');
 }
 

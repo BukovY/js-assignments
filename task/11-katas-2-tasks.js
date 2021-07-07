@@ -33,7 +33,21 @@
  *   ' _  _  _  _  _  _  _  _  _ \n'+
  *   '|_| _| _||_||_ |_ |_||_||_|\n'+     => 823856989
  *   '|_||_  _||_| _||_| _||_| _|\n',
- *
+ *   // line 29 - 58 - 87
+ //     0      1    2     3     4     5     6     7     8     9
+ let firstLineMap =  [' _ ', '   ',' _ ',' _ ','   ',' _ ',' _ ',' _ ',' _ ',' _ '];
+ let secondLineMap = ['| |', '  |',' _|',' _|','|_|','|_ ','|_ ','  |','|_|','|_|'];
+ let thirdLineMap =  ['|_|', '  |','|_ ',' _|','  |',' _|','|_|','  |','|_|',' _|'];
+ let firstLine = '';
+ let secondLine = '';
+ let thirdLine = '';
+ for(let i of bankAccount){
+    firstLine+=firstLineMap[parseInt(i)];
+    secondLine+=secondLineMap[parseInt(i)];
+    thirdLine+=thirdLineMap[parseInt(i)];
+  }
+ console.log(firstLine)
+ return (firstLine + '\n' + secondLine +'\n' + thirdLine +'\n').join('');
  */
 function parseBankAccount(bankAccount) {
   throw new Error('Not implemented');
