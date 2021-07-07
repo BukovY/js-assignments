@@ -21,14 +21,14 @@ function distinctLettersString(value1, value2) {
 
 /**
  * Takes a string with any characters.
- * Returns an object containing appearence of every distinct letters in lower case.
+ * Returns an object containing appearence of every distinct letters in !!! lower case.
  *
  * @param {string} value
  * @return {Object}
  *
  * @example
  *  'Who you are, Buddy?' => { a:1, d:2, e:1, h:1, o:2, r:1, u:2, y:2 }
- * let arr = value.split('').filter(el => el != ' ').map(el => el.toLowerCase())
+ * let arr = value.split('').filter(el => el != ' ').map(el => el.toLowerCase()) // & char at > <
  let obj = {}
  for(let i of arr){
     if(obj[i]){
@@ -38,10 +38,20 @@ function distinctLettersString(value1, value2) {
     }
   }
  return obj
+ https://sqljunkieshare.com/2012/01/11/ascii-char-string-functions/
  */
 
 function lowerLetters(value) {
-  throw new Error('Not implemented');
+  let arr = value.split('').filter(el => (el.charCodeAt(0) > 96 && el.charCodeAt(0) < 123));
+  let obj = {};
+  for(let i of arr){
+    if(obj[i]){
+      obj[i]++;
+    } else {
+      obj[i] = 1;
+    }
+  }
+  return obj;
 }
 
 /**
@@ -63,7 +73,17 @@ function lowerLetters(value) {
  */
 
 function titleCaseConvert(title, minorWords) {
-  throw new Error('Not implemented');
+  // 1 - cut 2 and 1 arg, 2 - map to Xxxx 3 - start 1 ind change exception
+  let [baseArr, exceptionWord] = [title.split(' '), minorWords ? minorWords.split(' '): []];
+  baseArr = baseArr.map(el => el.slice(0, 1).toUpperCase() + el.slice(1).toLowerCase());
+  exceptionWord = exceptionWord.map(el => el.toLowerCase());
+
+  for(let i=1;i<baseArr.length;i++){
+    if(exceptionWord.indexOf(baseArr[i].toLowerCase()) != -1){
+      baseArr[i] = baseArr[i].toLowerCase();
+    }
+  }
+  return baseArr.join(' ');
 }
 
 /**
