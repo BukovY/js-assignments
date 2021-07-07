@@ -29,7 +29,14 @@
  *
  */
 function getFizzBuzz(num) {
-  throw new Error('Not implemented');
+  if(num % 3 == 0 && num % 5 == 0){
+    return 'FizzBuzz'
+  } else if(num % 3 == 0) {
+    return 'Fizz'
+  } else if(num % 5 == 0){
+    return "Buzz"
+  }
+  return num
 }
 
 
@@ -64,6 +71,7 @@ function getFactorial(n) {
  *   1,2   =>  3  ( = 1+2 )
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
+ *   return  new Array(n2-n1+1).reduce((prev) => {return prev+1},n1).reduce((prev, cur) => {return prev + cur}, 0)
  */
 function getSumBetweenNumbers(n1, n2) {
   throw new Error('Not implemented');
@@ -84,9 +92,10 @@ function getSumBetweenNumbers(n1, n2) {
  *   3,4,5    =>  true
  *   10,1,1   =>  false
  *   10,10,10 =>  true
+ *   https://younglinux.info/python/task/triangle
  */
 function isTriangle(a, b, c) {
-  throw new Error('Not implemented');
+  return a+b>c && a+c>b && b+c>a;
 }
 
 
@@ -120,7 +129,7 @@ function isTriangle(a, b, c) {
  *
  *   { top: 0, left: 0, width: 10, height: 10 },
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
- *
+ * проверить находится ли одна из вершин второго прямоугольника в области первого
  */
 function doRectanglesOverlap(rect1, rect2) {
   throw new Error('Not implemented');
