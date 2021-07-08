@@ -439,18 +439,19 @@ function toStringList(arr) {
       obj[i] = 1;
     }
   }
- соберем карту, отсортируем, сгенерируем новый объект
- */
-function sortCitiesArray(arr) {
-  let obj = {}
-  for(let i of arr){
+ let obj = {}
+ for(let i of arr){
     if(obj[i.country]){
       obj[i.country].push(i.city)
     } else {
       obj[i.country] = [i.city]
     }
   }
-  return obj
+ return obj
+ соберем карту, отсортируем, сгенерируем новый объект
+ */
+function sortCitiesArray(arr) {
+
   throw new Error('Not implemented');
 }
 

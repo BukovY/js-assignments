@@ -74,7 +74,7 @@ function getFactorial(n) {
  *   return  new Array(n2-n1+1).reduce((prev) => {return prev+1},n1).reduce((prev, cur) => {return prev + cur}, 0)
  */
 function getSumBetweenNumbers(n1, n2) {
-  throw new Error('Not implemented');
+  return new Array(n2-n1).fill(n1).reduce((prev, next) => {return [...prev, prev[prev.length-1]+1]},[n1]).reduce((prev, next) => {return prev+next},0)
 }
 
 
@@ -177,6 +177,7 @@ function isInsideCircle(circle, point) {
  *   'The quick brown fox jumps over the lazy dog' => 'T'
  *   'abracadabra'  => 'c'
  *   'entente' => null
+ *   сосчитать символы в объектб пройтись по строке как ключу объекта и если 1 вернуть ключили цикл на индекс оф со 2 ллемента если прошел всю строку вернуть нулл
  */
 function findFirstSingleChar(str) {
   throw new Error('Not implemented');
