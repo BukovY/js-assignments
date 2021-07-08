@@ -35,9 +35,11 @@ function findElement(arr, value) {
  *    1 => [ 1 ]
  *    2 => [ 1, 3 ]
  *    5 => [ 1, 3, 5, 7, 9 ]
+ *    return len == 0 ? [] : new Array(len).reduce((prev, next, index)=>{ return [...prev, prev+2]},[])
+ *    https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from
  */
 function generateOdds(len) {
-  throw new Error('Not implemented');
+  return Array.from('1'.repeat(len)).reduce((prev, next, index)=>{ return [...prev, index*2+1]},[])
 }
 
 
@@ -235,7 +237,7 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-  throw new Error('Not implemented');
+  return arr.reduce((prev, next, ind, arr) => {return [...prev, parseInt(prev[prev.length-1])+parseInt(next)]},[0]).splice(1,)
 }
 
 /**
@@ -250,7 +252,7 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-  throw new Error('Not implemented');
+  return arr.filter((el, index)=> index % 2 == 1)
 }
 
 
@@ -267,9 +269,11 @@ function getSecondItems(arr) {
  *  [ 'a', 'b' ] => [ 'a', 'b','b' ]
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
+ *
+ *    return arr.reduce((prev, next, index, arr)=>{return [...prev, next.map]},[0])
  */
 function propagateItemsByPositionIndex(arr) {
-  throw new Error('Not implemented');
+  return arr.reduce((prev, next, ind)=> {return [...prev, ...new Array(ind+1).fill(ind).map(el=> arr[ind])]},[])
 }
 
 
@@ -285,6 +289,8 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 1, 2, 3 ] => [ 3, 2, 1 ]
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
+ *   return arr.reduce((prev, next, ind, arr)=> {},[...arr])
+ *   3 слота если максимальный меньше или равно срезаем со 1 синдекса и пушим. если меньше то просто пушим в массив.
  */
 function get3TopItems(arr) {
   throw new Error('Not implemented');
@@ -540,9 +546,10 @@ function selectMany(arr, childrenSelector) {
  *   [[1, 2], [3, 4], [5, 6]], [0,0]  => 1        (arr[0][0])
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
+ *   for(let i = 0; i< indexes.length; i++){if(i == indexes.length-1){return arr[indexes[i]]} else {arr = arr[indexes[i]]}} =(((((((
  */
 function getElementByIndexes(arr, indexes) {
-  throw new Error('Not implemented');
+  return indexes.reduce((prev,next,ind)=> {return [...prev][next] },[...arr])
 }
 
 
