@@ -290,10 +290,12 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  *   return arr.reduce((prev, next, ind, arr)=> {},[...arr])
- *   3 слота если максимальный меньше или равно срезаем со 1 синдекса и пушим. если меньше то просто пушим в массив.
+ *   3 слота если максимальный меньше или равно срезаем со 1 синдекса и пушим. если меньше то просто пушим в массив. arr.reduce(( => {}7d/\12]]
+ return arr.reduce((prev, next, ind,arr) => {return  prev.length == 3 ?  Math.min(prev) < arr[ind] ? [next, ...prev.sort().slice(1,)] : [...prev] : [...prev, next]},[]).sort().reverse()
+ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
  */
 function get3TopItems(arr) {
-  throw new Error('Not implemented');
+  return arr.length > 3 ? arr.sort(function(a, b) {return a - b;}).reverse().splice(0,3) : arr.sort().reverse();
 }
 
 
@@ -328,9 +330,15 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  *     let arrToreturn = []; for(let i of ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']){for(let k of arr){if(i == k){arrToreturn.push(k)}}}
  return arrToreturn
+ let map = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+ let arrNew = arr.map(el => map.indexOf(el))
+ arrNew.sort()
+ arrNew = arrNew.map(el => map[el])
+ return arrNew
  */
 function sortDigitNamesByNumericOrder(arr) {
-  throw new Error('Not implemented');
+  let map = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+  return arr.map(el => map.indexOf(el)).sort().map(el => map[el])
 }
 
 /**
@@ -423,8 +431,26 @@ function toStringList(arr) {
  *      { country: 'Poland',  city: 'Warsaw' },
  *      { country: 'Russia',  city: 'Moscow' },
  *      { country: 'Russia',  city: 'Saint Petersburg' }
+ *      let obj = {};
+ for(let i of arr){
+    if(obj[i]){
+      obj[i]++;
+    } else {
+      obj[i] = 1;
+    }
+  }
+ соберем карту, отсортируем, сгенерируем новый объект
  */
 function sortCitiesArray(arr) {
+  let obj = {}
+  for(let i of arr){
+    if(obj[i.country]){
+      obj[i.country].push(i.city)
+    } else {
+      obj[i.country] = [i.city]
+    }
+  }
+  return obj
   throw new Error('Not implemented');
 }
 
