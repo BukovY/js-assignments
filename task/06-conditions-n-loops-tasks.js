@@ -129,7 +129,23 @@ function isTriangle(a, b, c) {
  *
  *   { top: 0, left: 0, width: 10, height: 10 },
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
- * проверить находится ли одна из вершин второго прямоугольника в области первого
+ * нижняя точка верхнего находилась ниже верхней второго
+ * принадлежат ли точки отрезкам
+ *
+ if(rect1.top + rect1.height < rect2.top){ // начало второго за пределами первого по у
+    return false
+  }
+ if(rect1.top> rect2.top + rect2.height){ // начало первого за пределами конца второго по н
+    return false
+  }
+ if(rect1.left + rect1.width < rect2.left){ // начало второго за пределами первого по х
+    return false
+  }
+ if(rect2.left + rect2.width > rect1.left){
+    return false
+  }
+ return true
+ *
  */
 function doRectanglesOverlap(rect1, rect2) {
   throw new Error('Not implemented');
@@ -180,7 +196,12 @@ function isInsideCircle(circle, point) {
  *   сосчитать символы в объектб пройтись по строке как ключу объекта и если 1 вернуть ключили цикл на индекс оф со 2 ллемента если прошел всю строку вернуть нулл
  */
 function findFirstSingleChar(str) {
-  throw new Error('Not implemented');
+  let obj = {};
+  for(let i of str.split('')){
+    obj[i] ?  obj[i]++ :  obj[i] = 1;}
+  for(let i of str.split('')){
+    if(obj[i] == 1){return i}}
+  return null
 }
 
 
@@ -207,7 +228,9 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-  throw new Error('Not implemented');
+  let arr = [a,b].sort();
+  let str = `${isStartIncluded ? '[' : '('}${arr[0]}, ${arr[1]}${isEndIncluded ? ']' : ')'}`
+  return str
 }
 
 
@@ -224,7 +247,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-  throw new Error('Not implemented');
+  return str.split('').reverse().join('');
 }
 
 
@@ -241,7 +264,7 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-  throw new Error('Not implemented');
+  return parseInt(num.toString().split('').reverse().join(''));
 }
 
 
@@ -264,11 +287,44 @@ function reverseInteger(num) {
  *   4571234567890111 => false
  *   5436468789016589 => false
  *   4916123456789012 => false
+ *   https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%9B%D1%83%D0%BD%D0%B0
+ *     function isMoreThanNine(el){
+    return parseInt(el.toString().split('').map(el=>parseInt(el)).reduce((prev, next)=>{prev+next}))
+  }
+ let arr = ccn.toString().split('').map(el => parseInt(el));
+ arr = arr.reduce((prev, next, index) => {
+    return [...prev, index == arr.length-1 ? next : index%2 == 0 ? next*2:next]
+  },[])
+ arr = arr.map(el => el > 9 ? isMoreThanNine(el) : el).reduce((prev,next)=>{return prev+next})
+ return algoritmCount %  10 == 0 ? true : false;
+ }
+ function isCreditCardNumber(ccn) {
+  let arr = ccn.toString().split('').map(el => parseInt(el))
+  console.log(arr)
+  let doubled = arr.reduce((prev, next, index) => {return [...prev, index%2 == 0? next*2:next]}, [])
+  arr = [...doubled.slice(0,-1), arr[arr.length-1]]
+  console.log(arr)
+  arr = arr.map(el => el > 9 ? el-9 : el)
+  console.log(arr)
+  let algoritmCount = arr.reduce((prev, next) => {return parseInt(prev)+ parseInt(next)})
+  console.log(algoritmCount)
+}
  */
 function isCreditCardNumber(ccn) {
-  throw new Error('Not implemented');
-}
+  let arr = ccn.toString().split('').map(el=>parseInt(el))
+  let length = arr.length
+  if(length%2){ // нечетное 1-3-5-7-9
+    arr=arr.reduce((prev,next,index)=> {
+      return [...prev, index % 2 == 1 && index < length ? next*2 : next]
+    }, []).map(el => el>9? el-9:el)
 
+  } else { // четное 2-4-6-8
+    arr=arr.reduce((prev,next,index)=> {
+      return [...prev, index % 2 == 0 && index < length ? next*2 : next]
+    }, []).map(el => el>9? el-9:el)
+  }
+  return arr.reduce((prev, next)=> {return prev+next}) %10 == 0
+}
 
 /**
  * Returns the digital root of integer:
@@ -285,7 +341,8 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-  throw new Error('Not implemented');
+  num = num.toString().split('').map(el => parseInt(el)).reduce((prev, next) => {return prev+ next})
+  return num > 9 ? getDigitalRoot(num) : num
 }
 
 
@@ -309,6 +366,24 @@ function getDigitalRoot(num) {
  *   '[[][]][' => false
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
+ *   сравним по картам и механизм палиндрома, при этом в первой половине смотрим по 1 карте
+ *   function isBracketsBalanced(str) {
+  let mapOpen = ['[','(','{','&lt;'];
+  let mapClose = [']',')','}','&gt;'];
+  let arr = str.split('');
+  console.log(arr)
+  if(str.length % 2 == 1){ // невозможно
+    return false
+  }
+  for(let i=0; i<str.length/2; i++){
+    console.log(arr[i])
+    console.log(arr[str.length-i-1])
+    if(mapOpen.indexOf(arr[i]) != mapClose.indexOf(arr[str.length-i-1])){
+      return false
+    }
+  }
+  return true
+}
  */
 function isBracketsBalanced(str) {
   throw new Error('Not implemented');
@@ -370,9 +445,10 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 3  => '111112'
  *    365, 4  => '11231'
  *    365, 10 => '365'
+ *    https://stackoverflow.com/questions/9939760/how-do-i-convert-an-integer-to-binary-in-javascript
  */
 function toNaryString(num, n) {
-  throw new Error('Not implemented');
+  return num.toString(n)
 }
 
 
@@ -389,7 +465,24 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-  throw new Error('Not implemented');
+  let finalString = ''
+  let isContinue = true
+  let minLength = pathes.map(el => el.length).reduce((prev, next) => {
+    return next < prev ? next : prev
+  })
+  for (let i = 0; i < minLength; i++) {
+    let now = pathes[0][i]
+    for (let k of pathes) {
+      if (now != k[i]) {
+        isContinue = false
+      }
+    }
+    isContinue ? finalString = finalString + now : ''
+  }
+  if (finalString.lastIndexOf('/')+1 != finalString.length) {
+    finalString = finalString.slice(0, finalString.lastIndexOf('/') + 1)
+  }
+  return finalString
 }
 
 
