@@ -474,7 +474,11 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  throw new Error('Not implemented');
+  let arr = new Array(n).fill(0).map(el => new Array(n).fill(0))
+  for(let i=0; i< arr.length; i++){
+    arr[i][i]=1
+  }
+  return arr
 }
 
 /**
@@ -491,7 +495,8 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-  throw new Error('Not implemented');
+  let length = end-start
+  return length == 0 ? [start] : new Array(length).fill(start).reduce((prev, next, index) => {return [...prev, parseInt(prev[index])+1]},[start])
 }
 
 /**
@@ -538,9 +543,23 @@ function distinct(arr) {
  *    "Russia" => ["Omsk", "Samara"],
  *    "Poland" => ["Lodz"]
  *   }
+ *
+ *   let map = new Map();
+ for(let i = 0; i<array.length;i++){
+    let key = keySelector(array[i]);
+    let value = valueSelector(array[i])
+    if(map.has(key)){map.set(key, map.get(key).concat(value))
+    } else {map.set(key, [value])}
+  }
+ return Array.from(map);
+
+ let map = new Map();
+ map = array.reduce((prev, next, index)=>{return prev.has(keySelector(array[index])) ? prev.set(keySelector(array[index]), prev.get(keySelector(array[index])).concat(valueSelector(array[index]))) : prev.set(keySelector(array[index]), valueSelector(array[index])) },Map)
+ return Array.from(map);
  */
 function group(array, keySelector, valueSelector) {
-  throw new Error('Not implemented');
+  
+  return array
 }
 
 
