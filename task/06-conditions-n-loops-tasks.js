@@ -146,6 +146,17 @@ function isTriangle(a, b, c) {
   }
  return true
  *
+ *
+ *
+ * let isOnOy = (rect1.top + rect1.height > rect2.top) || (rect1.top < rect2.top + rect2.height);
+ console.log('y')
+ console.log(rect1.top + rect1.height > rect2.top)
+ console.log(rect1.top < rect2.top + rect2.height)
+ let isOnOx = (rect1.left + rect1.width > rect2.left) || (rect2.left + rect2.width < rect1.left);
+ console.log('x')
+ console.log(rect1.left + rect1.width > rect2.left)
+ console.log(rect2.left + rect2.width < rect1.left)
+ return isOnOy && isOnOx
  */
 function doRectanglesOverlap(rect1, rect2) {
   throw new Error('Not implemented');
@@ -384,6 +395,32 @@ function getDigitalRoot(num) {
   }
   return true
 }
+ находим открывающий элемент, ищем закрывающий если найден оба вырезаем и повторяем
+  if(str.length == 0){
+    return true
+  }
+  if(str.length%2 == 1){
+    return false
+  }
+  let mapOpen = ['[','(','{','&lt;'];
+  let mapClose = [']',')','}','&gt;'];
+  if(mapClose.indexOf(str[0]) > -1){
+    return false
+  }
+  if(str.length == 2){
+    console.log(`i am here: ${str}`)
+    console.log(mapOpen.indexOf(str[0]))
+    console.log(mapClose.indexOf(str[1]))
+    if(mapOpen.indexOf(str[0]) == mapClose.indexOf(str[1])){
+      return true
+    }
+  }
+  let elemNow = str[0]
+  let closeElement = mapClose[mapOpen.indexOf(elemNow)]
+  let indexClose = str.indexOf(closeElement)
+  let newSter = str.slice(1,indexClose)+str.slice(indexClose+1)
+  console.log(newSter)
+  isBracketsBalanced(newSter)
  */
 function isBracketsBalanced(str) {
   throw new Error('Not implemented');
