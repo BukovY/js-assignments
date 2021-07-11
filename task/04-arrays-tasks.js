@@ -556,9 +556,14 @@ function distinct(arr) {
  let map = new Map();
  map = array.reduce((prev, next, index)=>{return prev.has(keySelector(array[index])) ? prev.set(keySelector(array[index]), prev.get(keySelector(array[index])).concat(valueSelector(array[index]))) : prev.set(keySelector(array[index]), valueSelector(array[index])) },Map)
  return Array.from(map);
+ жесть
  */
 function group(array, keySelector, valueSelector) {
-  
+  array = array.reduce((prev, next, i) => {
+    let key = keySelector(array[i]); let value = valueSelector(array[i])
+    prev.has(key) ? prev.set(key, prev.get(key).concat(value)): prev.set(key, [value]);
+    return prev
+  }, new Map())
   return array
 }
 
@@ -577,7 +582,7 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  throw new Error('Not implemented');
+  return arr.map(el => childrenSelector(el)).flat(Infinity)
 }
 
 
