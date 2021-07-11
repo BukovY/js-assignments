@@ -113,6 +113,21 @@ function getZigZagMatrix(n) {
  * [[1,3], [2,3], [1,4], [2,4], [1,5], [2,5]]  => true
  * [[0,0], [0,1], [1,1], [0,2], [1,2], [2,2], [0,3], [1,3], [2,3], [3,3]] => false
  *
+ * let pairs = dominoes[0]
+ for(let i = 1; i<dominoes.length;i++){
+    let indexOne = pairs.indexOf(dominoes[i][0]);
+    let indexTwo = pairs.indexOf(dominoes[i][1]);
+   if(indexOne != -1){
+     pairs = [dominoes[i][1], indexOne == 0 ? pairs[1] : pairs[0]]
+   }
+   if(indexTwo != -1){
+     pairs = [dominoes[i][0], indexTwo == 0 ? pairs[1] : pairs[0]]
+   }
+   if(indexOne == -1 && indexTwo == -1){
+     return false
+   }
+  }
+ return true
  */
 function canDominoesMakeRow(dominoes) {
   throw new Error('Not implemented');
