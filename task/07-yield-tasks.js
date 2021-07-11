@@ -66,7 +66,6 @@ function* getFibonacciSequence() {
   yield 0
   let prevfib = 1
   let nowFib = 1
-  let buff = 0
   yield 1;
   yield 1
   while(true){
