@@ -60,7 +60,7 @@ function getJSON(obj) {
  return obj
  */
 function fromJSON(proto, json) {
-  throw new Error('Not implemented');
+  return new proto.constructor(...Object.values(JSON.parse(json)))
 }
 
 
