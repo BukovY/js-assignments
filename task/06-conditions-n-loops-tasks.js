@@ -598,6 +598,10 @@ function getMatrixProduct(m1, m2) {
     }
   }
  return undefined
+
+      [[    ,   ,    ],
+ *    [    ,   ,    ],       =>  undefined
+ *    [    ,   ,    ]]
  */
 function evaluateTicTacToePosition(position) {
   throw new Error('Not implemented');
