@@ -50,7 +50,20 @@
  return (firstLine + '\n' + secondLine +'\n' + thirdLine +'\n').join('');
  */
 function parseBankAccount(bankAccount) {
-  throw new Error('Not implemented');
+  let firstLineMap =  [' _ ', '   ',' _ ',' _ ','   ',' _ ',' _ ',' _ ',' _ ',' _ '];
+  let secondLineMap = ['| |', '  |',' _|',' _|','|_|','|_ ','|_ ','  |','|_|','|_|'];
+  let thirdLineMap =  ['|_|', '  |','|_ ',' _|','  |',' _|','|_|','  |','|_|',' _|'];
+  let number = '';
+  let arrays = bankAccount.split('\n')
+  for(let i=0; i<9;i++ ){// идем по первой строке
+    let str=[arrays[0].slice(i*3,i*3+3),arrays[1].slice(i*3,i*3+3),arrays[2].slice(i*3,i*3+3)]
+    for(let i=0;i<=9;i++){
+      if(str[0]==firstLineMap[i] && str[1]==secondLineMap[i] && str[2]==thirdLineMap[i]){
+        number += i
+      }
+    }
+  }
+  return number;
 }
 
 
