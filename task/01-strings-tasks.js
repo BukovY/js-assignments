@@ -222,7 +222,9 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  throw new Error('Not implemented');
+  let normal = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!?';
+  let decode = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm!?';
+  return str.split('').map(el => el == ' ' ? ' ' : decode[normal.indexOf(el)]).join('');
 }
 
 /**
