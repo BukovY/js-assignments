@@ -421,6 +421,28 @@ function getDigitalRoot(num) {
   let newSter = str.slice(1,indexClose)+str.slice(indexClose+1)
   console.log(newSter)
   isBracketsBalanced(newSter)
+    if(str.length == 0){
+    return true
+  }
+  if(str.length%2 == 1){
+    return false
+  }
+  let mapOpen = ['[','(','{','<'];
+  let mapClose = [']',')','}','>'];
+  if(mapClose.indexOf(str[0]) > -1){
+    return false
+  }
+  for(let i = 0; i=str.length /2; i++){
+    let elemNow = str[0]
+    let closeElement = mapClose[mapOpen.indexOf(elemNow)]
+    let indexClose = str.indexOf(closeElement)
+    if(closeElement == -1 || indexClose ==-1){
+      return false
+    }
+    str = str.slice(1,indexClose)+str.slice(indexClose+1)
+  }
+
+  return true
  */
 function isBracketsBalanced(str) {
   throw new Error('Not implemented');
@@ -604,7 +626,24 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  */
 function evaluateTicTacToePosition(position) {
-  throw new Error('Not implemented');
+  let winCombine = [
+    [ [0,0], [1,0],[2,0] ],
+    [ [0,1], [1,1],[2,1] ],
+    [ [0,2], [1,2],[2,2] ],
+    [ [0,0], [0,1],[0,2] ],
+    [ [1,0], [1,1],[1,2] ],
+    [ [2,0], [2,1],[2,2] ],
+    [ [0,0], [1,1],[2,2] ],
+    [ [0,2], [1,1],[2,0] ],
+  ]
+  for(let i of winCombine){ // [ [1,0], [1,1],[1,2] ],
+    let [one, two, three] = [...i]
+    let now = position[one[0]][one[1]] == 'X' || position[one[0]][one[1]] == '0' ? position[one[0]][one[1]] : 'r';
+    if(now == position[two[0]][two[1]] && now == position[three[0]][three[1]]){
+      return now
+    }
+  }
+  return undefined
 }
 
 module.exports = {

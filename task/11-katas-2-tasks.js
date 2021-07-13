@@ -93,6 +93,17 @@ function parseBankAccount(bankAccount) {
  *      'or a',
  *      'sequence of',
  *      'characters.'
+ *
+ *        text = text.split(' ')
+ let yeldStr = text[0]
+ let index = 1
+ while(true){
+    let nowStr = yeldStr + ' '+str[index]
+    if(nowStr.length > columns){
+
+    }
+  }
+ console.log(text.split(' '))
  */
 function* wrapText(text, columns) {
   throw new Error('Not implemented');

@@ -449,9 +449,17 @@ function toStringList(arr) {
   }
  return obj
  соберем карту, отсортируем, сгенерируем новый объект
+ мне кажется что это слишком сложное решение
  */
 function sortCitiesArray(arr) {
-  throw new Error('Not implemented');
+  let country = arr.map(el=> el.country)
+  country = [...new Set(country)].sort()
+  let city = arr.reduce((prev, next) => {
+    let indexCountry = country.indexOf(next.country)
+    if(prev[indexCountry]){prev[indexCountry].push(next.city)} else {prev[indexCountry] = []; prev[indexCountry].push(next.city)}
+    return prev},new Array(country.length)).map( el => el.sort())
+  country = country.reduce((prev, next, index) => { return [...prev, city[index].map(function(el){ return { city: el,country : next } } )]}, [])
+  return country.flat()
 }
 
 /**
