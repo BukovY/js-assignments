@@ -124,6 +124,10 @@ function getMostProfitFromStockQuotes(quotes) {
  *   var shortLink = urlShortener.encode('https://en.wikipedia.org/wiki/URL_shortening');
  *   var original  = urlShortener.decode(shortLink); // => 'https://en.wikipedia.org/wiki/URL_shortening'
  *
+ *
+ *   https://learn.javascript.ru/bitwise-operators
+ *   надо получить строку преобразовать ее в 8ричный код склеить кодиоровать в 16 ричный
+ *
  */
 function UrlShortener() {
   this.urlAllowedChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
