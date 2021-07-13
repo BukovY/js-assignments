@@ -451,8 +451,7 @@ function toStringList(arr) {
  соберем карту, отсортируем, сгенерируем новый объект
  */
 function sortCitiesArray(arr) {
-  arr = arr.reduce()
-  return arr;
+  throw new Error('Not implemented');
 }
 
 /**

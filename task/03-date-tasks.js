@@ -103,7 +103,13 @@ function timeSpanToString(startDate, endDate) {
  return allDegree/(Math.PI*2)
  */
 function angleBetweenClockHands(date) {
-  throw new Error('Not implemented');
+  let min = date.getUTCMinutes();
+  let hour = date.getUTCHours();
+  let allDegree =  Math.abs(0.5 * (60*hour - 11*min));
+  while(allDegree > 180){
+    allDegree = Math.abs(360 - allDegree)
+  }
+  return allDegree*(Math.PI/180)
 }
 
 module.exports = {
