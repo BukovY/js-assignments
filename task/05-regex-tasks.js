@@ -28,9 +28,10 @@
  *   'The roof, the roof, the roof is on fire'
  *
  * @return {RegExp}
+ *
  */
 function getRegexForGuid() {
-  throw new Error('Not implemented');
+  return /\{[0-9 A-F]{8}-[0-9 A-F]{4}-[0-9 A-F]{4}-[0-9 A-F]{4}-[0-9 A-F]{12}\}/i
 }
 
 
