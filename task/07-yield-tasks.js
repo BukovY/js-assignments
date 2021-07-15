@@ -105,10 +105,18 @@ function* getFibonacciSequence() {
  *           5
  *
  *  depthTraversalTree(node1) => node1, node2, node3, node4, node5, node6, node7, node8
- *
+ * https://www.programmersought.com/article/82327088064/
+ * // обход графа в глубину. по типу стека. дерем 1 узел если есть деть реверсаем их (более глубокий ребенок будет обработан раньше) и пушим в стек саммива
  */
 function* depthTraversalTree(root) {
-  throw new Error('Not implemented');
+  let arr = [root]
+  while(arr.length){
+    let first = arr.pop();
+    yield first
+    if(first.children){
+      arr.push(...first.children.reverse())
+    }
+  }
 }
 
 
@@ -131,10 +139,23 @@ function* depthTraversalTree(root) {
  *       5   6     7
  *           |
  *           8
- *
+ * https://medium.com/@kenny.hom27/breadth-first-vs-depth-first-tree-traversal-in-javascript-48df2ebfc6d1
  */
 function* breadthTraversalTree(root) {
-  throw new Error('Not implemented');
+  let arr = [root]
+  while(true){
+    let first = arr[0];
+    yield first
+    if(first.children){
+      for(let i of first.children){
+        arr.push(i)
+      }
+    }
+    arr = arr.slice(1)
+    if(arr.length == 0){
+      break
+    }
+  }
 }
 
 
@@ -159,7 +180,27 @@ function* breadthTraversalTree(root) {
   }
  */
 function* mergeSortedSequences(source1, source2) {
-  throw new Error('Not implemented');
+  const s1 = source1()
+  const s2 = source2()
+  let val1 = s1.next().value
+  let val2 = s2.next().value
+  while(true){
+    if(val1 == undefined && val2 == undefined){
+      break
+    } else if(val1 == undefined){
+      yield val2
+      val2 = s2.next().value
+    } else if(val2 == undefined){
+      yield val1
+      val1 = s1.next().value
+    } else if(val1 < val2){
+      yield val1
+      val1 = s1.next().value
+    } else {
+      yield val2
+      val2 = s2.next().value
+    }
+  }
 }
 
 module.exports = {
