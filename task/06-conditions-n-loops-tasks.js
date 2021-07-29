@@ -401,7 +401,7 @@ function getDigitalRoot(num) {
  *   '()   => true
  *   '[[]' => false
  *   ']['  => false
- *   '[[][][[]]]' => true
+ *   '[[][][[]]]' => true  ][][[]
  *   '[[][]][' => false
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
@@ -509,7 +509,41 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-  throw new Error('Not implemented');
+  let bettwen = endDate.getTime() - startDate.getTime();
+  const sec = 1000;
+  const min = sec *60;
+  const hour = min *60;
+  const day = hour *24;
+  if (bettwen <= 45 * sec) {
+    return 'a few seconds ago';
+  }
+  if (bettwen <= 90 * sec) {
+    return 'a minute ago';}
+  if (bettwen <= 45 * min) {
+    return `${Math.round((bettwen - 1) / min)} minutes ago`;
+  }
+  if (bettwen <= 90 * min) {
+    return 'an hour ago';
+  }
+  if (bettwen <= 22 * hour) {
+    return `${Math.round((bettwen - 1) / hour)} hours ago`;
+  }
+  if (bettwen <= 36 * hour) {
+    return 'a day ago';
+  }
+  if (bettwen <= 25 * day) {
+    return `${Math.round((bettwen - 1) / day)} days ago`;
+  }
+  if (bettwen <= 45 * day) {
+    return 'a month ago';
+  }
+  if (bettwen <= 345 * day) {
+    return `${Math.round(bettwen / 30 / day)} months ago`;
+  }
+  if (bettwen <= 545 * day) {
+    return 'a year ago';
+  }
+  return `${Math.round(bettwen / 365 / day)} years ago`;
 }
 
 

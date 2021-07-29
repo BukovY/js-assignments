@@ -101,6 +101,7 @@ function titleCaseConvert(title, minorWords) {
  *  '4 2 +'  =>  6  // 4 + 2
  *  '2 5 * 2 + 3 /'  =>  4   //  ((5 * 2) + 2) / 3
  *  '5 1 2 + 4 * + 3 -'  =>  14   // 5 + ((1 + 2) * 4) -3
+ *  https://shareablecode.com/snippets/evaluate-reverse-polish-notation-javascript-solution-GSRD-VfSY
  */
 
 function calcRPN(expr) {
