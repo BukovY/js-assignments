@@ -129,61 +129,6 @@ function isTriangle(a, b, c) {
  *
  *   { top: 0, left: 0, width: 10, height: 10 },
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
- * нижняя точка верхнего находилась ниже верхней второго
- * принадлежат ли точки отрезкам
- *
- if(rect1.top + rect1.height < rect2.top){ // начало второго за пределами первого по у
-    return false
-  }
- if(rect1.top> rect2.top + rect2.height){ // начало первого за пределами конца второго по н
-    return false
-  }
- if(rect1.left + rect1.width < rect2.left){ // начало второго за пределами первого по х
-    return false
-  }
- if(rect2.left + rect2.width > rect1.left){
-    return false
-  }
- return true
- *
- *
- *
- * let isOnOy = (rect1.top + rect1.height > rect2.top) || (rect1.top < rect2.top + rect2.height);
- console.log('y')
- console.log(rect1.top + rect1.height > rect2.top)
- console.log(rect1.top < rect2.top + rect2.height)
- let isOnOx = (rect1.left + rect1.width > rect2.left) || (rect2.left + rect2.width < rect1.left);
- console.log('x')
- console.log(rect1.left + rect1.width > rect2.left)
- console.log(rect2.left + rect2.width < rect1.left)
- return isOnOy && isOnOx
-
- @example:
- *   { top: 0, left: 0, width: 10, height: 10 },
- *   { top: 5, left: 5, width: 20, height: 20 }    =>  true
- *
- *   { top: 0, left: 0, width: 10, height: 10 },
- *   { top:20, left:20, width: 20, height: 20 }    =>  false
- *   // нужно чтоб пересекалось по 2 плоскостям
- *     let oyUpr2 = rect1.top <= rect2.top && rect1.top + rect1.width >= rect2.top// 0< 25 || 0+90 > 25
- let oyDown2 = (rect1.top <= rect2.top + rect2.width) && (rect1.top + rect1.width >= rect2.top + rect2.width) //0 < 25 + 10 || 0+90 > 25+10
- let oxUpr2 = rect1.left <= rect2.left && rect1.left + rect1.height >= rect2.left // 0 < 100 || 0+90 > 100
- let oxDown2 = (rect1.left <= rect2.left + rect2.height) && (rect1.left + rect1.height <= rect2.left + rect2.height) // 0< 100+90 || 90 < 100
-
-
- // да блин почему это неверно
- let rect1Oy = new Array(rect1.height + 1).fill(rect1.top).reduce((prev, next, index) => {return [...prev,next+index]}, []);
- let rect1Ox = new Array(rect1.width + 1).fill(rect1.left).reduce((prev, next, index) => {return [...prev,next+index]}, []);
- // проверим 4 точки на принадлежность
- console.log(rect1Oy)
- console.log(rect1Ox)
- console.log(rect2)
- let isr2oyUp = rect1Oy.indexOf(rect2.top)
- let isr2oyDown = rect1Oy.indexOf(rect2.top+rect2.height)
- let isr2oxUp = rect1Ox.indexOf(rect2.left)
- let isr2oxDown = rect1Ox.indexOf(rect2.left+rect2.width)
- console.log((isr2oyUp || isr2oyDown) && (isr2oxUp || isr2oxDown))
- return new Boolean((isr2oyUp || isr2oyDown) && (isr2oxUp || isr2oxDown))
  */
 function doRectanglesOverlap(rect1, rect2) {
   throw new Error('Not implemented');
