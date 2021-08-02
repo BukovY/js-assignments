@@ -142,18 +142,13 @@ function* depthTraversalTree(root) {
  * https://medium.com/@kenny.hom27/breadth-first-vs-depth-first-tree-traversal-in-javascript-48df2ebfc6d1
  */
 function* breadthTraversalTree(root) {
-  let arr = [root]
-  while(true){
-    let first = arr[0];
-    yield first
-    if(first.children){
-      for(let i of first.children){
-        arr.push(i)
+  let arr = [ root ];
+  for (let cur of arr) {
+    yield cur;
+    if (cur.children) {
+      for(let child of cur.children) {
+        arr.push(child);
       }
-    }
-    arr = arr.slice(1)
-    if(arr.length == 0){
-      break
     }
   }
 }
